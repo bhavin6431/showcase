@@ -7,7 +7,7 @@ export default function CardTemplate(props) {
     return (
         <div>
             <div className="loggedInUser"></div>
-            <div className="questionNumber">{props.props.loginState.email} <br></br><Link to="/">Logout</Link><br></br>{props.props.item.id} / 10</div>
+            <div className="questionNumber">{props.props.loginState.email} <br></br><Link to="/">Logout</Link><br></br>{props.props.item.id} / {props.props.totalQuestions}</div>
             <Question key={`'q' {props.props.item.id}`} item={props.props.item} id={props.props.item.id} />
             <Options key={`'a' {props.props.item.id}`} item={props.props.item} setAnswer={props.props.setAnswer} checkedAnswer={props.props.checkedAnswer} id={props.props.item.id} />
         </div>
