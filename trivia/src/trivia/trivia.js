@@ -3,12 +3,14 @@ import Card from "../card/card";
 import TriviaTemplate from "./triviatemplate";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-export default function Trivia(props) {
-
-    var { id } = useParams();
+export default function Trivia() {
+    
+    var { id } = useParams();    
     const [data, setData] = useState(null);
+    const location = useLocation();
+    const [loginState, setLoginState] = useState(location.state)        
     if(!id) {
         id = 1;
     }
@@ -49,7 +51,7 @@ export default function Trivia(props) {
                     total++
                 }
             })
-            toast("You have scored " + total + " points !", { position: toast.POSITION.TOP_CENTER });                    
+            toast("Well done " + loginState.email + " You have scored " + total + " points !", { position: toast.POSITION.TOP_CENTER });                    
             
         } else {
             setItemId((prevItemId) => prevItemId + 1)            
@@ -85,7 +87,7 @@ export default function Trivia(props) {
     function handleRestart() {       
         setCheckedAnswer(() => false)
         setItemId(() => 1)
-        navigate("/")
+        navigate("/trivia", {state : loginState})
     }
 
     function createTriviaCard(items, itemId) {                
@@ -93,7 +95,7 @@ export default function Trivia(props) {
             const questionOptions = prevData.map(item => {
 
                 if (itemId === item.id)
-                    return <Card item={item} key={item.id} setAnswer={handleAnswer} checkedAnswer={checkedAnswer}/>
+                    return <Card item={item} key={item.id} setAnswer={handleAnswer} checkedAnswer={checkedAnswer} loginState={loginState}/>
             })
             setQuestionOptions(() => questionOptions)
             return prevData
