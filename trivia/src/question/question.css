@@ -1,4 +1,9 @@
 .card {
     background-color: lightblue;
-    border-radius: 30px;
+    border-radius: 20px;
+    border-color:green
+  }
+
+  .card-title {
+    margin-bottom: 20px;
   }

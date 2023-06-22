@@ -8,7 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="header">
-      <h1 className="headerTitle"> Welcome to trivia </h1>    
+      <h1 className="headerTitle"> Welcome to Trivia </h1>    
     <BrowserRouter >
       <Routes>
         <Route path="/" element={<Trivia />}/>                                                
