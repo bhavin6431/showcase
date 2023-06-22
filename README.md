@@ -1,3 +1,3 @@
-# showcase
+# show case - Show case of various projects
 
-Trivia - Based on react and bootstrap using opendb trivia API
+**Project Trivia** - Based on react and bootstrap using opendb trivia API
